@@ -41,11 +41,12 @@ pub struct Task {
     pub confirmations: u32, // Number of times the bot confirmed task progress
     pub last_snooze: Option<DateTime>, // Track the last time the task was snoozed
     pub subtasks: Option<Vec<Task>>,
+    pub dependent_on: Option<Vec<ObjectId>>, // Track the task that this task is dependent on
 }
 
 impl Task {
     // Utility method to create a new task with an optional list of subtasks
-    pub fn new(description: String, task_type: TaskType, subtasks: Option<Vec<Task>>) -> Self {
+    pub fn new(description: String, task_type: TaskType, subtasks: Option<Vec<Task>>, dependent_on: Option<Vec<ObjectId>>) -> Self {
         Task {
             id: ObjectId::new(),
             description,
@@ -59,6 +60,7 @@ impl Task {
             confirmations: 0,
             last_snooze: None,
             subtasks,
+            dependent_on,
         }
     }
 
