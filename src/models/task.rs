@@ -74,4 +74,9 @@ impl Task {
         }
         total_time
     }
+
+    pub fn to_string(&self) -> String {
+        format!("Task: {}\nType: {:?}\nStatus: {:?}\nCreated At: {}\nStart Time: {:?}\nEnd Time: {:?}\nTotal Time Spent: {}\nTime Entries: {:?}\nConfirmations: {}\nLast Snooze: {:?}\nSubtasks: {:?}\nDependent On: {:?}",
+                self.description, self.task_type, self.status, self.created_at, self.start_time, self.end_time, self.total_time_spent, self.time_entries, self.confirmations, self.last_snooze, self.subtasks, self.dependent_on)
+    }
 }
